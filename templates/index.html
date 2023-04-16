@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Online/Offline statistics</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: auto;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+        }
+        td {
+            font-size: 1.1em;
+        }
+        caption {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Online/Offline statistics</h1>
+    <table>
+        <caption>Most popular online time</caption>
+        <tr>
+            <th>Hour</th>
+            <th>Number of online events</th>
+        </tr>
+        {% if hourly_frequency %}
+            {% for i in range(24) %}
+                <tr>
+                    <td>{{ i }}:00 - {{ i+1 }}:00 Uhr</td>
+                    <td>{{ hourly_frequency[i] }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="2">No data available</td>
+            </tr>
+        {% endif %}
+    </table>
+    <br>
+    <table>
+        <caption>Average duration of online/offline phases</caption>
+        <tr>
+            <th>phase</th>
+            <th>Length of time</th>
+        </tr>
+        <tr>
+            <td>online</td>
+            <td>{{ average_online_duration }}</td>
+        </tr>
+        <tr>
+            <td>offline</td>
+            <td>{{ average_offline_duration }}</td>
+        </tr>
+    </table>
+    <br>
+    <table>
+        <caption>Longest online/offline phase</caption>
+        <tr>
+            <th>phase</th>
+            <th>start time</th>
+            <th>end times</th>
+            <th>Length of time</th>
+        </tr>
+        <tr>
+            <td>online</td>
+            <td>{{ longest_online_start }}</td>
+            <td>{{ longest_online_end }}</td>
+            <td>{{ longest_online_duration_formatted }}</td>
+        </tr>
+        <tr>
+            <td>offline</td>
+            <td>{{ longest_offline_start }}</td>
+            <td>{{ longest_offline_end }}</td>
+            <td>{{ longest_offline_duration_formatted }}</td>
+        </tr>
+    </table>
+</body>
+</html>

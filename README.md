@@ -1,0 +1,7 @@
+This code in main.py monitors the online status of a Tellonym user with the specified username. 
+
+The check_tellonym_online_status function opens a Chrome browser in headless mode, navigates to the Tellonym profile of the user, and searches for an element indicating whether the user is online or not. If the element is found, the user's online status is set to "Online", otherwise to "Offline". The track_tellonym_online_status function calls the check_tellonym_online_status function at a loop interval of 60 seconds and stores changes in the online status in a text file. The username of the Tellonym account to monitor is specified in the main function.
+
+The online status displayed by the Tellonym account may not be solely influenced by activities on the Tellonym account. If the Tellonym account is linked to a Snapchat or Instagram account, the online status could also be influenced by activities on those platforms. However, it is unclear whether this is actually the case.
+
+ The two programs are tools for monitoring the online status of a Tellonym user and analyzing their online and offline activities. The display_onlie_status.py program displays the data in an HTML table. The second program, more_details_show.py analyzes the online and offline times and calculates statistics such as the most popular hour, the average online duration, and the longest online and offline periods. Both programs are developed using the Python Flask framework.
